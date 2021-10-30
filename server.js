@@ -3,11 +3,13 @@
 
 // hacer el nuevo import
 import Express from 'express';
-import { MongoClient, ObjectId } from 'mongodb';
 import Cors from 'cors';
+import dotenv from 'dotenv';
+import { MongoClient, ObjectId } from 'mongodb';
 
-const stringConexion = 
-'mongodb+srv://marcea:Admin2021@proyectoconcesionario.z6j8p.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+dotenv.config({ path:'./.env' });
+
+const stringConexion = process.env.DATABASE_URL;
 
 const client = new MongoClient(stringConexion, {
     useNewUrlParser: true,
@@ -101,15 +103,15 @@ app.delete('/vehiculos/eliminar', (req, res) => {
 });
 
 const main = () => {
-
     client.connect((err,db)=>{
         if(err){
             console.error("Error conectando a la BD");
+            return 'error';
         }
         baseDeDatos = db.db('concesionario');
         console.log('Conexión a BD exitosa');
-        return app.listen(5000, () => {
-        console.log('escuchando puerto 5000');
+        return app.listen(process.env.PORT, () => {
+        console.log(`Escuchando puerto: ${process.env.PORT}`);
       });
     });
 };
