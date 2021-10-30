@@ -1,0 +1,19 @@
+{
+  "name": "api-concesionario2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "marcea18 <marcea18@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongodb": "^4.1.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
+}
