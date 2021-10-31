@@ -1,5 +1,11 @@
 import Express from 'express';
-import { queryAllVehicles, crearVehiculo, editarVechiculo, eliminarVehiculo } from '../../controllers/vehiculos/controller.js';
+import {
+  queryAllVehicles,
+  crearVehiculo,
+  editarVehiculo,
+  eliminarVehiculo,
+} from '../../controllers/vehiculos/controller.js';
+import { getDB } from '../../db/db.js';
 
 const rutasVehiculo = Express.Router();
 
@@ -16,16 +22,16 @@ rutasVehiculo.route('/vehiculos').get((req, res) => {
   queryAllVehicles(genercCallback(res));
 });
 
-rutasVehiculo.route('/vehiculos/nuevo').post((req, res) => {
+rutasVehiculo.route('/vehiculos').post((req, res) => {
   crearVehiculo(req.body, genercCallback(res));
 });
 
 rutasVehiculo.route('/vehiculos/:id').patch((req, res) => {
-  editarVechiculo(req.params.id, req.body, genercCallback(res));
+  editarVehiculo(req.params.id, req.body, genercCallback(res));
 });
 
 rutasVehiculo.route('/vehiculos/:id').delete((req, res) => {
- eliminarVehiculo(req.params.id, genercCallback(res));
+  eliminarVehiculo(req.params.id, genercCallback(res));
 });
 
 export default rutasVehiculo;

@@ -20,8 +20,8 @@ const crearVehiculo = async (datosVehiculo, callback) => {
   }
 };
 
-const editarVechiculo = async (id, edicion, callback) => {
-  const filtroVehiculo = { _id: new ObjectId(edicion.id) };
+const editarVehiculo = async (id, edicion, callback) => {
+  const filtroVehiculo = { _id: new ObjectId(id) };
   const operacion = {
     $set: edicion,
   };
@@ -31,10 +31,10 @@ const editarVechiculo = async (id, edicion, callback) => {
     .findOneAndUpdate(filtroVehiculo, operacion, { upsert: true, returnOriginal: true }, callback);
 };
 
-const eliminarVehiculo = async(id, callback) => {
+const eliminarVehiculo = async (id, callback) => {
   const filtroVehiculo = { _id: new ObjectId(id) };
   const baseDeDatos = getDB();
   await baseDeDatos.collection('vehiculo').deleteOne(filtroVehiculo, callback);
 };
 
-export { queryAllVehicles, crearVehiculo, editarVechiculo, eliminarVehiculo };
+export { queryAllVehicles, crearVehiculo, editarVehiculo, eliminarVehiculo };
