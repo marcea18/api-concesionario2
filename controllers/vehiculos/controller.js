@@ -20,9 +20,8 @@ const crearVehiculo = async (datosVehiculo, callback) => {
   }
 };
 
-const editarVechiculo = async (edicion, callback) => {
+const editarVechiculo = async (id, edicion, callback) => {
   const filtroVehiculo = { _id: new ObjectId(edicion.id) };
-  delete edicion.id;
   const operacion = {
     $set: edicion,
   };
