@@ -25,13 +25,14 @@ var jwtCheck = jwt({
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 5,
-    jwksUri: 'https://misiontic-concesionario2021.us.auth0.com/.well-known/jwks.json',
+    jwksUri: 'https://misiontic2021-concesionario.us.auth0.com/.well-known/jwks.json',
   }),
   audience: 'api-autenticacion-concesionario-mintic',
-  issuer: 'https://misiontic-concesionario2021.us.auth0.com/',
+  issuer: 'https://misiontic2021-concesionario.us.auth0.com/',
   algorithms: ['RS256'],
 });
 
+// 4 y 5: enviarle el token a auth0 para que devuelva si es valido o no
 app.use(jwtCheck);
 
 app.use(rutasVehiculo);
